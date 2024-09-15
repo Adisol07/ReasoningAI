@@ -1,7 +1,5 @@
 # Reasoning AI
- > Open Source alternative to OpenAI o1 reasoning model. \
- > New version goals:
- > - Config
+ > Open Source alternative to OpenAI o1 reasoning model.
 ---
  > [!WARNING]
  > Keep in mind that it is still in beta and therefore you may encounter bugs!
