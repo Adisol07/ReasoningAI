@@ -5,15 +5,17 @@ namespace ReasoningAI;
 
 class Program
 {
+    static string AppPath => AppDomain.CurrentDomain.BaseDirectory;
+
     static async Task Main()
     {
         Console.Title = "ReasoningAI";
         Config config = new Config();
-        if (!File.Exists("./config.json"))
+        if (!File.Exists(AppPath + "/config.json"))
         {
-            File.WriteAllText("./config.json", JsonSerializer.Serialize(config, new JsonSerializerOptions() { WriteIndented = true }));
+            File.WriteAllText(AppPath + "/config.json", JsonSerializer.Serialize(config, new JsonSerializerOptions() { WriteIndented = true }));
         }
-        config = JsonSerializer.Deserialize<Config>(File.ReadAllText("./config.json"))!;
+        config = JsonSerializer.Deserialize<Config>(File.ReadAllText(AppPath + "/config.json"))!;
         OllamaRequest.URL = config.OllamaAddress + "api/chat";
         Random rng = new Random();
         while (true)
