@@ -12,6 +12,14 @@ Then download the ReasoningModel.txt file from the latest release and add the Re
 Then just simply download the ReasoningAI_your_os.zip and extract it.\
 When that is done just run the ReasoningAI program and enjoy!
 
+## Future goals
+ - [ ] Chat - currently the model does not have a chat feature - one prompt, one response.
+ - [ ] Saving chats and loading them in the app.
+ - [ ] API - add the ability to open API.
+ - [ ] Final model response - currently the model seems like it is answering to itself - which is partially a feature but the final response should be targetted to you and not the AI model.
+ - [ ] Thinking title delay removal - right now the thinking text is one response off.
+ - [ ] Config location - the app now creates and looks for config.json file in the directory you are currently in which can lead to problems.
+
 ## Details
 ---
  > [!CAUTION]
