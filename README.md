@@ -27,7 +27,7 @@ When that is done just run the ReasoningAI program and enjoy!
  > You can modify everything about the model in its model file but keep in mind that some behaviour of the model is required for the program to work
 ---
 Base model: llama 3.1\
-Version: 1.1.0 - beta\
+Version: 1.2.0 - beta\
 Context size: 4096
 
 ## License
