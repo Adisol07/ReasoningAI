@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 
 namespace ReasoningAI;
 
@@ -7,6 +8,13 @@ class Program
     static async Task Main()
     {
         Console.Title = "ReasoningAI";
+        Config config = new Config();
+        if (!File.Exists("./config.json"))
+        {
+            File.WriteAllText("./config.json", JsonSerializer.Serialize(config, new JsonSerializerOptions() { WriteIndented = true }));
+        }
+        config = JsonSerializer.Deserialize<Config>(File.ReadAllText("./config.json"))!;
+        OllamaRequest.URL = config.OllamaAddress + "api/chat";
         Random rng = new Random();
         while (true)
         {
@@ -26,7 +34,7 @@ class Program
                 Console.SetCursorPosition(0, y);
                 Console.WriteLine("Thinking: " + title);
             };
-            Prompt prompt = await Prompt.Send(userinput, 3);
+            Prompt prompt = await Prompt.Send(userinput, config.MaxReasoningIterations);
             Console.SetCursorPosition(0, y);
             for (int x = 0; x < Console.WindowWidth - 1; x++)
                     Console.Write(" ");

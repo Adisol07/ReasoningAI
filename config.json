@@ -1,0 +1,4 @@
+{
+  "MaxReasoningIterations": 5,
+  "OllamaAddress": "http://localhost:11434/"
+}
