@@ -16,7 +16,7 @@ When that is done just run the ReasoningAI program and enjoy!
  - [ ] Chat - currently the model does not have a chat feature - one prompt, one response.
  - [ ] Saving chats and loading them in the app.
  - [ ] API - add the ability to open API.
- - [ ] Final model response - currently the model seems like it is answering to itself - which is partially a feature but the final response should be targetted to you and not the AI model.
+ - [-] Final model response - currently the model seems like it is answering to itself - which is partially a feature but the final response should be targetted to you and not the AI model.
  - [ ] Thinking title delay removal - right now the thinking text is one response off.
  - [ ] Config location - the app now creates and looks for config.json file in the directory you are currently in which can lead to problems.
 
