@@ -19,6 +19,7 @@ When that is done just run the ReasoningAI program and enjoy!
  - [-] Final model response - currently the model seems like it is answering to itself - which is partially a feature but the final response should be targetted to you and not the AI model.
  - [ ] Thinking title delay removal - right now the thinking text is one response off.
  - [ ] Config location - the app now creates and looks for config.json file in the directory you are currently in which can lead to problems.
+ - [ ] Thinking title location fix
 
 ## Details
 ---
