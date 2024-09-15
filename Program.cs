@@ -27,6 +27,8 @@ class Program
             Console.Title = "ReasoningAI : " + userinput;
             DateTime start = DateTime.Now;
             int y = Console.GetCursorPosition().Top;
+            if (y == Console.WindowHeight - 1)
+                y--;
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Thinking..");
             Prompt.TitleChanged += (title)=>{
