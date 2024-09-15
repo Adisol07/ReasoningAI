@@ -4,7 +4,7 @@
  > [!WARNING]
  > Keep in mind that it is still in beta and therefore you may encounter bugs!
 ---
-![Screenshot](https://github.com/Adisol07/ReasoningAI/blob/master/strawberry_example.png?raw=true)
+![Screenshot](https://raw.githubusercontent.com/Adisol07/ReasoningAI/main/strawberry_example.png)
 
 ## Installation
 First you need to download & install Ollama.\
