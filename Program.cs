@@ -31,7 +31,8 @@ class Program
                 y--;
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Thinking..");
-            Prompt.TitleChanged += (title)=>{
+            Prompt.TitleChanged += (title) =>
+            {
                 Console.SetCursorPosition(0, y);
                 for (int x = 0; x < Console.WindowWidth - 1; x++)
                     Console.Write(" ");
@@ -41,14 +42,29 @@ class Program
             Prompt prompt = await Prompt.Send(userinput, config.MaxReasoningIterations);
             Console.SetCursorPosition(0, y);
             for (int x = 0; x < Console.WindowWidth - 1; x++)
-                    Console.Write(" ");
+                Console.Write(" ");
             Console.SetCursorPosition(0, y);
             Console.WriteLine("Thought for " + Math.Floor((DateTime.Now - start).TotalSeconds * 100) / 100 + " seconds");
             Console.ForegroundColor = ConsoleColor.Gray;
-            foreach (char c in prompt.FinalResponse)
+            if (config.Animation == 1)
             {
-                Console.Write(c);
-                Thread.Sleep(rng.Next(0, 26));
+                foreach (char c in prompt.FinalResponse)
+                {
+                    Console.Write(c);
+                    Thread.Sleep(rng.Next(0, config.MaxAnimationMsPerToken));
+                }
+            }
+            else if (config.Animation == 2)
+            {
+                foreach (string word in prompt.FinalResponse.Split(' '))
+                {
+                    Console.Write(word + " ");
+                    Thread.Sleep(rng.Next(0, config.MaxAnimationMsPerToken));
+                }
+            }
+            else
+            {
+                Console.Write(prompt.FinalResponse);
             }
             Console.Write("\n");
         }
