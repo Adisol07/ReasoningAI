@@ -5,19 +5,22 @@ namespace ReasoningAI;
 
 class Program
 {
-    static string AppPath => AppDomain.CurrentDomain.BaseDirectory;
+    public static string AppPath => AppDomain.CurrentDomain.BaseDirectory;
 
     static async Task Main()
     {
         Console.Title = "ReasoningAI";
         Config config = new Config();
         if (!File.Exists(AppPath + "/config.json"))
-        {
             File.WriteAllText(AppPath + "/config.json", JsonSerializer.Serialize(config, new JsonSerializerOptions() { WriteIndented = true }));
-        }
+        if (!Directory.Exists(AppPath + "/chats"))
+            Directory.CreateDirectory(AppPath + "/chats");
         config = JsonSerializer.Deserialize<Config>(File.ReadAllText(AppPath + "/config.json"))!;
-        OllamaRequest.URL = config.OllamaAddress + "api/chat";
+        if (File.Exists(config.SystemPromptFileName))
+            LLMRequest.SystemPrompt = File.ReadAllText(config.SystemPromptFileName);
+        LLMRequest.URL = config.ServerAddress;
         Random rng = new Random();
+        Chat chat = new Chat();
         while (true)
         {
             Console.Title = "ReasoningAI : New Chat";
@@ -39,7 +42,8 @@ class Program
                 Console.SetCursorPosition(0, y);
                 Console.WriteLine("Thinking: " + title);
             };
-            Prompt prompt = await Prompt.Send(userinput, config.MaxReasoningIterations);
+            Prompt prompt = await chat.Send(userinput, config.ServerType, config.MaxReasoningIterations);
+            chat.Save();
             Console.SetCursorPosition(0, y);
             for (int x = 0; x < Console.WindowWidth - 1; x++)
                 Console.Write(" ");

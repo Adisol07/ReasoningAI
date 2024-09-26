@@ -2,11 +2,11 @@ using System;
 
 namespace ReasoningAI;
 
-public class OllamaResponse
+public class OllamaResponse : ILLMResponse
 {
     public string? model { get; set; }
     public DateTime? created_at { get; set; }
-    public OllamaMessage? message { get; set; }
+    public LLMMessage? message { get; set; }
     public bool? done { get; set; }
     public long? total_duration { get; set; }
     public long? load_duration { get; set; }
@@ -14,6 +14,11 @@ public class OllamaResponse
     public long? prompt_eval_duration { get; set; }
     public long? eval_count { get; set; }
     public long? eval_duration { get; set; }
+
+    public string GetMessage()
+    {
+        return this.message!.content;
+    }
 }
 
 // {
